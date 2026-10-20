@@ -1,0 +1,82 @@
+# Decap CMS config — dashboard at /admin
+# Works with Netlify Identity + Git Gateway (see README.md for the 5-minute setup).
+
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "site_content"
+    label: "✏️ Site Content"
+    files:
+      - name: "content"
+        label: "All Site Content"
+        file: "content.json"
+        fields:
+          - label: "Site"
+            name: "site"
+            widget: "object"
+            fields:
+              - { label: "Your name", name: "name", widget: "string" }
+              - { label: "Brand / handle", name: "brand", widget: "string" }
+              - { label: "Job title", name: "title", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+
+          - label: "Hero (top section)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Availability badge", name: "badge", widget: "string" }
+              - { label: "Big heading", name: "heading", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - label: "Stats"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Value (e.g. 1.1M+)", name: "value", widget: "string" }
+                  - { label: "Label (e.g. Project views)", name: "label", widget: "string" }
+
+          - label: "About"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "About text", name: "text", widget: "text" }
+              - { label: "Checklist items", name: "checklist", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
+
+          - label: "Projects"
+            name: "projects"
+            widget: "list"
+            fields:
+              - { label: "Project title", name: "title", widget: "string" }
+              - { label: "Subtitle / short description", name: "subtitle", widget: "string" }
+              - { label: "Tile letter (1 character)", name: "letter", widget: "string" }
+              - { label: "Behance URL", name: "url", widget: "string" }
+              - { label: "Appreciations (number)", name: "appreciations", widget: "number", value_type: "int" }
+
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Service name", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Price (e.g. $350)", name: "price", widget: "string" }
+
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "WhatsApp number (digits only, with country code)", name: "whatsapp", widget: "string" }
+              - { label: "WhatsApp label", name: "whatsappLabel", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+
+          - label: "Social links"
+            name: "socials"
+            widget: "list"
+            fields:
+              - { label: "Name (e.g. Instagram)", name: "name", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
